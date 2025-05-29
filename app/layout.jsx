@@ -6,7 +6,7 @@ const raleway = Raleway({ subsets: ["latin"], preload: false });
 
 export const metadata = {
   title: "DPC PKB Pontianak | Partai Kebangkitan Bangsa untuk Indonesia Maju",
-  description: "Personal Website",
+  description: "Berkomitmen untuk menciptakan perubahan positif melalui pendidikan, pemberdayaan ekonomi, dan pembangunan infrastruktur demi kemajuan Indonesia.",
   icons: {
     icon: [
       {
