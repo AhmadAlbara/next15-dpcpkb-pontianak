@@ -18,6 +18,7 @@ const BackButton = () => {
     <button
       onClick={handleBack}
       className="inline-block text-primary hover:scale-105"
+      aria-label="Back Button"
     >
       ← Kembali
     </button>

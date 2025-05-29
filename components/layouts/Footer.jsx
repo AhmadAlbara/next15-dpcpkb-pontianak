@@ -62,6 +62,7 @@ const Footer = () => {
             target="_blank"
             rel="noopener noreferrer"
             className="text-white hover:text-primary transition-colors"
+            aria-label="Go To Facebook"
           >
             <FaFacebook size={24} />
           </Link>
@@ -70,6 +71,7 @@ const Footer = () => {
             target="_blank"
             rel="noopener noreferrer"
             className="text-white hover:text-primary transition-colors"
+              aria-label="Go To X"
           >
             <FaTwitter size={24} />
           </Link>
@@ -78,6 +80,7 @@ const Footer = () => {
             target="_blank"
             rel="noopener noreferrer"
             className="text-white hover:text-primary transition-colors"
+              aria-label="Go To Instagram"
           >
             <FaInstagram size={24} />
           </Link>

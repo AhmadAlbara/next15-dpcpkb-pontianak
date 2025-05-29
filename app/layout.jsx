@@ -5,7 +5,7 @@ import AppLayout from "@/components/layouts";
 const raleway = Raleway({ subsets: ["latin"], preload: false });
 
 export const metadata = {
-  title: "PKB Pontianak",
+  title: "DPC PKB Pontianak | Partai Kebangkitan Bangsa untuk Indonesia Maju",
   description: "Personal Website",
   icons: {
     icon: [
