@@ -61,7 +61,7 @@ const Footer = () => {
             href="https://www.facebook.com/dpp.pkb"
             target="_blank"
             rel="noopener noreferrer"
-            className="text-white hover:text-primary transition-colors"
+            className="text-white hover:text-blue-700 transition-colors"
             aria-label="Go To Facebook"
           >
             <FaFacebook size={24} />
@@ -70,7 +70,7 @@ const Footer = () => {
             href="https://x.com/dpp_pkb"
             target="_blank"
             rel="noopener noreferrer"
-            className="text-white hover:text-primary transition-colors"
+            className="text-white hover:text-blue-400 transition-colors"
               aria-label="Go To X"
           >
             <FaTwitter size={24} />
@@ -79,7 +79,7 @@ const Footer = () => {
             href="https://www.instagram.com/dpp_pkb/"
             target="_blank"
             rel="noopener noreferrer"
-            className="text-white hover:text-primary transition-colors"
+            className="text-white hover:text-pink-600 transition-colors"
               aria-label="Go To Instagram"
           >
             <FaInstagram size={24} />
