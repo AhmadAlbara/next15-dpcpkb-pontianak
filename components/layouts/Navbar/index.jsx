@@ -52,6 +52,7 @@ const Navbar = () => {
         <div className="relative group">
           <button
             className="flex items-center gap-1 text-gray-400 hover:text-primary uppercase text-sm focus:outline-none"
+            aria-label="Drop Down"
           >
             Lainnya <FaChevronDown size={12} />
           </button>

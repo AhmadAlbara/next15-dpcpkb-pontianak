@@ -7,6 +7,7 @@ const HamburgerButton = ({ isOpen, onClick }) => {
     <button
       onClick={onClick}
       className="flex flex-col justify-center items-center md:hidden  "
+      aria-label="Hamburger menu button"
     >
       <span
         className={`bg-primary block h-0.5 w-6 rounded-sm transition-all duration-300 ${
