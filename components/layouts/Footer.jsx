@@ -89,7 +89,7 @@ const Footer = () => {
 
       {/* Footer Bottom */}
       <div className="border-t border-accent mt-8 pt-4 text-center text-sm text-white">
-        &copy; {new Date().getFullYear()} PKB Kota Pontianak. All rights reserved.
+        &copy; {new Date().getFullYear()} DPC PKB Kota Pontianak. All rights reserved.
       </div>
     </footer>
   );
