@@ -2,7 +2,6 @@ import { Raleway } from "next/font/google";
 import "./globals.css";
 import AppLayout from "@/components/layouts";
 
-
 const raleway = Raleway({ subsets: ["latin"], preload: false });
 
 export const metadata = {
@@ -10,12 +9,12 @@ export const metadata = {
   description: "Personal Website",
   icons: {
     icon: [
-        {
-            url: "/images/logo.jpg", 
-            href: "/images/logo.jpg", 
-        },
+      {
+        url: "/images/logo.jpg",
+        href: "/images/logo.jpg",
+      },
     ],
-},
+  },
 };
 export const viewport = {
   width: "device-width",

@@ -2,6 +2,7 @@ import React from "react";
 import Navbar from "./Navbar";
 import Footer from "./Footer";
 import Sidebar from "./Sidebar";
+import ScrollToTop from "../elements/ScrollToTop";
 
 const AppLayout = ({ children }) => {
   return (
@@ -15,6 +16,8 @@ const AppLayout = ({ children }) => {
           <div className="">{children}</div>
           <Sidebar />
         </main>
+
+        <ScrollToTop/>
 
         {/* Footer */}
       </div>

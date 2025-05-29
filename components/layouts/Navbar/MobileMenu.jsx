@@ -7,11 +7,11 @@ const MobileMenu = ({ isOpen, onClose }) => {
   const [showDropdown, setShowDropdown] = useState(false);
 
   // FILTER MAIN ITEMS
-  const mainItems = NAVBAR_ITEMS.filter(
+    const mainItems = NAVBAR_ITEMS.filter(
     (item) =>
       item.label === "Beranda" ||
-      item.label === "Tentang Kami" ||
-      item.label.trim() === "Kontak"
+      item.label === "Pengurus DPC PKB Pontianak" ||
+      item.label === "Tentang Kami"
   );
   const dropdownItems = NAVBAR_ITEMS.filter(
     (item) => !mainItems.includes(item)

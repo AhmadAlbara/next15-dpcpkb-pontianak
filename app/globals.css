@@ -14,7 +14,6 @@
   --color-primary: var(--primary);
   --color-primary-dark: var(--primary-dark);
   --color-accent: var(--accent);
-
 }
 
 @media (prefers-color-scheme: dark) {
@@ -23,11 +22,55 @@
     --foreground: #ededed;
   }
 }
-*{
-  @apply transition-all ease-in-out duration-200
+* {
+  @apply transition-all ease-in-out duration-200;
 }
 
 body {
   background: var(--background);
   color: var(--foreground);
+}
+
+.photoset {
+  padding: 2px;
+ grid-column: auto;
+}
+.photo {
+  position: relative;
+  flex-grow: 10;
+  min-width: calc(100% / 4);
+  background-size: cover;
+  background-position: center;
+
+  @media screen and (max-width: 700px) {
+    min-width: calc(100% / 2);
+  }
+  @media screen and (max-width: 460px) {
+    min-width: 100%;
+  }
+  &:after {
+    padding-top: 83.33333%;
+    display: block;
+    content: "";
+  }
+  &:before {
+    z-index: 2;
+    position: absolute;
+    content: "";
+    top: 0px;
+    right: 0px;
+    bottom: 0px;
+    left: 0px;
+    box-shadow: inset 0 0 0 2px #ffffff;
+  }
+  &:nth-child(1) {
+    width: 100%;
+  }
+}
+
+&.square .photo:after {
+  padding-top: 100%;
+}
+&.portrait .photo:after {
+  padding-top: 120%;
 }

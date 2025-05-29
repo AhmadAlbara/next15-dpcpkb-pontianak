@@ -10,13 +10,13 @@ export const VISI_ITEMS = [
   ];
   
   export const MISI_ITEMS = [
-    { text: "1. Menjaga keutuhan NKRI dan memperkuat nilai-nilai kebangsaan dalam bingkai Bhinneka Tunggal Ika." },
-    { text: "2. Mengembangkan nilai-nilai Islam yang moderat (wasathiyah), toleran, dan rahmatan lil 'alamin." },
-    { text: "3. Meningkatkan kesejahteraan rakyat, terutama kaum kecil, petani, nelayan, buruh, dan pelaku UMKM." },
-    { text: "4. Mendorong pemerintahan yang bersih dan berkeadilan, serta memperkuat demokrasi yang partisipatif dan beretika." },
-    { text: "5. Memperjuangkan pendidikan yang berkualitas dan terjangkau bagi seluruh rakyat Indonesia." },
-    { text: "6. Menegakkan keadilan sosial, perlindungan hak asasi manusia, serta kesetaraan gender." },
-    { text: "7. Membangun ekonomi nasional berbasis kerakyatan dan kemandirian." },
+    { text: "Menjaga keutuhan NKRI dan memperkuat nilai-nilai kebangsaan dalam bingkai Bhinneka Tunggal Ika." },
+    { text: "Mengembangkan nilai-nilai Islam yang moderat (wasathiyah), toleran, dan rahmatan lil 'alamin." },
+    { text: "Meningkatkan kesejahteraan rakyat, terutama kaum kecil, petani, nelayan, buruh, dan pelaku UMKM." },
+    { text: "Mendorong pemerintahan yang bersih dan berkeadilan, serta memperkuat demokrasi yang partisipatif dan beretika." },
+    { text: "Memperjuangkan pendidikan yang berkualitas dan terjangkau bagi seluruh rakyat Indonesia." },
+    { text: "Menegakkan keadilan sosial, perlindungan hak asasi manusia, serta kesetaraan gender." },
+    { text: "Membangun ekonomi nasional berbasis kerakyatan dan kemandirian." },
   ];
   
   export const STORY_ITEMS = [

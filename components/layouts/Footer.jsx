@@ -17,8 +17,9 @@ const Footer = () => {
   return (
     <footer className="bg-primary text-white py-8 mt-12">
       <div className="max-w-7xl mx-auto px-4 grid grid-cols-1 md:grid-cols-2 gap-8">
+        {/* Contact Section */}
         <div>
-          <h2 className="text-lg font-semibold mb-4 uppercase tracking-wider">Kontak Kami</h2>
+          <h2 className="text-lg font-semibold mb-4 uppercase tracking-wider text-center md:text-left">Kontak Kami DPC PKB PONTIANAK</h2>
           <ul className="space-y-3">
             {KONTAK_ITEMS.map((item, i) => (
               <li key={i} className="flex items-center gap-2">
@@ -42,6 +43,7 @@ const Footer = () => {
           </ul>
         </div>
 
+        {/* About Section */}
         <div className="text-center">
           <h2 className="text-lg font-semibold mb-4 uppercase tracking-wider">Tentang Kami</h2>
           <p className="text-white leading-relaxed">
@@ -51,6 +53,38 @@ const Footer = () => {
         </div>
       </div>
 
+      {/* Social Media Links for PKB Pusat */}
+      <div className="mt-8 text-center">
+        <h2 className="text-lg font-semibold mb-4 uppercase tracking-wider">Ikuti Media Sosial DPP PKB</h2>
+        <div className="flex justify-center gap-6">
+          <Link
+            href="https://www.facebook.com/dpp.pkb"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="text-white hover:text-primary transition-colors"
+          >
+            <FaFacebook size={24} />
+          </Link>
+          <Link
+            href="https://x.com/dpp_pkb"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="text-white hover:text-primary transition-colors"
+          >
+            <FaTwitter size={24} />
+          </Link>
+          <Link
+            href="https://www.instagram.com/dpp_pkb/"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="text-white hover:text-primary transition-colors"
+          >
+            <FaInstagram size={24} />
+          </Link>
+        </div>
+      </div>
+
+      {/* Footer Bottom */}
       <div className="border-t border-accent mt-8 pt-4 text-center text-sm text-white">
         &copy; {new Date().getFullYear()} PKB Kota Pontianak. All rights reserved.
       </div>

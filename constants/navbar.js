@@ -8,21 +8,18 @@ const NAVBAR_ITEMS = [
   },
   {
     pathname: "/administrator",
-    label: "Pengurus",
+    label: "Pengurus DPC PKB Pontianak",
   },
-  {
-    pathname: "/program ",
-    label: "Programs",
-  },
+ 
   {
     pathname: "/gallery",
     label: "Galeri",
   },
-
   {
-    pathname: "/contact",
-    label: "Kontak ",
+    pathname: "/activity",
+    label: "Kegiatan Terbaru",
   },
+
 ];
 
 export default NAVBAR_ITEMS;

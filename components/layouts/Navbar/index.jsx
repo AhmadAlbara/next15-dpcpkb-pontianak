@@ -7,9 +7,11 @@ import Link from "next/link";
 import React, { useState } from "react";
 import MobileMenu from "./MobileMenu";
 import { FaChevronDown } from "react-icons/fa";
+import { usePathname } from "next/navigation";  // Import usePathname
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
+  const pathname = usePathname();  // Get current pathname using usePathname
 
   const handleToggle = () => {
     setIsOpen(!isOpen);
@@ -19,15 +21,20 @@ const Navbar = () => {
   const mainItems = NAVBAR_ITEMS.filter(
     (item) =>
       item.label === "Beranda" ||
-      item.label === "Tentang Kami" ||
-      item.label.trim() === "Kontak"
+      item.label === "Pengurus DPC PKB Pontianak" ||
+      item.label === "Tentang Kami"
   );
   const dropdownItems = NAVBAR_ITEMS.filter(
     (item) => !mainItems.includes(item)
   );
 
+  // Function to determine if the current path is active
+  const isActive = (pathnameToCompare) => {
+    return pathname === pathnameToCompare ? "text-primary font-bold" : "text-gray-400";  // Compare current path
+  };
+
   return (
-    <nav className="w-full py-5 relative flex justify-between items-center ">
+    <nav className="w-full py-5 relative flex justify-between items-center px-4 md:px-0" id="id_navbar">
       <AppLogo />
 
       <div className="space-x-4 hidden md:flex items-center">
@@ -35,7 +42,7 @@ const Navbar = () => {
           <Link
             href={items.pathname.trim()}
             key={i}
-            className="text-gray-400 hover:text-primary uppercase text-sm"
+            className={`uppercase text-sm ${isActive(items.pathname.trim())} hover:text-primary`}
           >
             {items.label.trim()}
           </Link>
@@ -55,7 +62,7 @@ const Navbar = () => {
               <Link
                 key={i}
                 href={item.pathname.trim()}
-                className="block px-4 py-2 text-sm uppercase hover:bg-gray-100 hover:text-primary"
+                className={`block px-4 py-2 text-sm uppercase ${isActive(item.pathname.trim())} hover:bg-gray-100 hover:text-primary`}
               >
                 {item.label.trim()}
               </Link>

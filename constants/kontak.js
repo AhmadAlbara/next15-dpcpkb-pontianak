@@ -26,7 +26,7 @@ const KONTAK_ITEMS = [
     },
     { 
         type: "Address", 
-        value: "Jl. Contoh No. 123, Jakarta, Indonesia", 
+        value: "Jl. Suprapto V No.51, Benua Melayu Darat, Kec. Pontianak Sel., Kota Pontianak, Kalimantan Barat 78113", 
         alt: "Alamat" 
     }
 ];
