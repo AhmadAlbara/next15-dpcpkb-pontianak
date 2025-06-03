@@ -13,9 +13,18 @@ const Hero = () => {
   ];
 
   const texts = [
-    { title: "Bangkit Bersama PKB", subtitle: "Partai Kebangkitan Bangsa untuk Indonesia Maju" },
-    { title: "Maju Bersama PKB", subtitle: "Bersama PKB Menuju Indonesia Sejahtera" },
-    { title: "Solidaritas PKB", subtitle: "Kita Bersatu untuk Keadilan Sosial" },
+    {
+      title: "Bangkit Bersama PKB",
+      subtitle: "Partai Kebangkitan Bangsa untuk Indonesia Maju",
+    },
+    {
+      title: "Maju Bersama PKB",
+      subtitle: "Bersama PKB Menuju Indonesia Sejahtera",
+    },
+    {
+      title: "Solidaritas PKB",
+      subtitle: "Kita Bersatu untuk Keadilan Sosial",
+    },
   ];
 
   const [currentIndex, setCurrentIndex] = useState(0);
@@ -25,7 +34,9 @@ const Hero = () => {
   };
 
   const prevSlide = () => {
-    setCurrentIndex((prevIndex) => (prevIndex - 1 + images.length) % images.length);
+    setCurrentIndex(
+      (prevIndex) => (prevIndex - 1 + images.length) % images.length
+    );
   };
 
   useEffect(() => {
@@ -72,15 +83,22 @@ const Hero = () => {
       </div>
 
       {/* Navigation buttons */}
+      {/* Tombol Kiri */}
       <button
-        className="absolute left-4 top-1/2 -translate-y-1/2 z-20 bg-black bg-opacity-40 hover:bg-opacity-70 transition p-3 rounded-full text-white"
+        className="z-20 bg-black bg-opacity-40 hover:bg-opacity-70 transition p-3 rounded-full text-white 
+             md:absolute md:left-4 md:top-1/2 md:-translate-y-1/2 
+             bottom-4 left-1/2 -translate-x-[110%] md:translate-x-0 md:bottom-auto absolute"
         onClick={prevSlide}
         aria-label="Sebelumnya"
       >
         &larr;
       </button>
+
+      {/* Tombol Kanan */}
       <button
-        className="absolute right-4 top-1/2 -translate-y-1/2 z-20 bg-black bg-opacity-40 hover:bg-opacity-70 transition p-3 rounded-full text-white"
+        className="z-20 bg-black bg-opacity-40 hover:bg-opacity-70 transition p-3 rounded-full text-white 
+             md:absolute md:right-4 md:top-1/2 md:-translate-y-1/2 
+             bottom-4 right-1/2  translate-x-[110%] md:translate-x-0 md:bottom-auto absolute"
         onClick={nextSlide}
         aria-label="Berikutnya"
       >
