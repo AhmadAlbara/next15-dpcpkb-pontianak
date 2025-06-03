@@ -1,25 +1,23 @@
 const NAVBAR_ITEMS = [
-  { pathname: "/", 
-    label: "Beranda" 
-  },
+  { pathname: "/", label: "Beranda" },
   {
-    pathname: "/about",
+
     label: "Tentang Kami",
+    subMenu: [
+      { pathname: "/about/dpc-pkb-pontianak", label: "DPC PKB Kota Pontianak" },
+      { pathname: "/about/administrator", label: "Pengurus DPC PKB Pontianak" },
+      { pathname: "/about/history", label: "Sejarah" },
+      { pathname: "/about/vision", label: "Visi dan Misi" },
+    ],
   },
-  {
-    pathname: "/administrator",
-    label: "Pengurus DPC PKB Pontianak",
-  },
- 
   {
     pathname: "/gallery",
-    label: "Galeri",
+    label: "E-Library",
   },
   {
     pathname: "/activity",
-    label: "Kegiatan Terbaru",
+    label: "Kegiatan",
   },
-
 ];
 
 export default NAVBAR_ITEMS;

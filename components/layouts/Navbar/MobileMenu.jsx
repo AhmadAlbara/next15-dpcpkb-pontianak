@@ -1,82 +1,88 @@
 import Link from "next/link";
 import NAVBAR_ITEMS from "@/constants/navbar";
-import React, { useState } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import { FaChevronDown } from "react-icons/fa";
 
 const MobileMenu = ({ isOpen, onClose }) => {
-  const [showDropdown, setShowDropdown] = useState(false);
+  const [showDropdown, setShowDropdown] = useState(null);
+  const menuRef = useRef(null); // Refrensi untuk menu
 
-  // FILTER MAIN ITEMS
-    const mainItems = NAVBAR_ITEMS.filter(
-    (item) =>
-      item.label === "Beranda" ||
-      item.label === "Pengurus DPC PKB Pontianak" ||
-      item.label === "Tentang Kami"
-  );
-  const dropdownItems = NAVBAR_ITEMS.filter(
-    (item) => !mainItems.includes(item)
-  );
+  const mainItems = NAVBAR_ITEMS.filter((item) => !item.subMenu);
+  const dropdownItems = NAVBAR_ITEMS.filter((item) => item.subMenu);
+
+  const handleDropdownToggle = (index) => {
+    setShowDropdown(showDropdown === index ? null : index);
+  };
+
+  useEffect(() => {
+    const handleClickOutside = (event) => {
+      if (menuRef.current && !menuRef.current.contains(event.target)) {
+        onClose();
+      }
+    };
+
+    if (isOpen) {
+      document.addEventListener("mousedown", handleClickOutside);
+    }
+
+    return () => {
+      document.removeEventListener("mousedown", handleClickOutside);
+    };
+  }, [isOpen, onClose]);
 
   return (
-    <>
-      <div
-        className={`fixed top-0 right-0 h-full w-64 bg-primary shadow-lg block md:hidden z-40 ${
-          isOpen ? "translate-x-0" : "translate-x-full"
-        } transition-transform duration-300`}
-      >
-        <div className="flex flex-col space-y-4 p-6">
-          {/* MAIN LINKS */}
-          {mainItems.map((item, i) => (
-            <Link
-              href={item.pathname.trim()}
-              key={i}
-              className="text-white uppercase text-sm"
-              onClick={onClose}
+    <div
+      ref={menuRef}
+      className={`fixed top-0 right-0 h-full w-64 bg-primary shadow-lg block md:hidden z-40 ${
+        isOpen ? "translate-x-0" : "translate-x-full"
+      } transition-transform duration-300`}
+    >
+      <div className="flex flex-col space-y-4 p-6">
+        {/* MAIN LINKS */}
+        {mainItems.map((item, i) => (
+          <Link
+            href={item.pathname.trim()}
+            key={i}
+            className="text-white uppercase text-sm"
+            onClick={onClose}
+          >
+            {item.label.trim()}
+          </Link>
+        ))}
+
+        {/* DROPDOWN LINKS */}
+        {dropdownItems.map((item, i) => (
+          <div key={i} className="relative">
+            <button
+              onClick={() => handleDropdownToggle(i)}
+              className="flex items-center text-white uppercase text-sm w-full justify-between"
             >
               {item.label.trim()}
-            </Link>
-          ))}
-
-          {/* DROPDOWN MENU */}
-          <div>
-            <button
-              onClick={() => setShowDropdown(!showDropdown)}
-              className="flex items-center justify-between text-white uppercase text-sm w-full focus:outline-none"
-            >
-              Lainnya
               <FaChevronDown
-                className={`ml-2 transition-transform ${
-                  showDropdown ? "rotate-180" : "rotate-0"
+                className={`ml-2 transform transition-transform ${
+                  showDropdown === i ? "rotate-180" : "rotate-0"
                 }`}
-                size={12}
               />
             </button>
 
-            {showDropdown && (
+            {showDropdown === i && (
               <div className="mt-2 ml-4 flex flex-col space-y-2">
-                {dropdownItems.map((item, i) => (
+                {item.subMenu.map((subItem, subIndex) => (
                   <Link
-                    href={item.pathname.trim()}
-                    key={i}
+                    href={subItem.pathname.trim()}
+                    key={subIndex}
                     className="text-white uppercase text-xs"
                     onClick={onClose}
                   >
-                    {item.label.trim()}
+                    {subItem.label.trim()}
                   </Link>
                 ))}
               </div>
             )}
           </div>
-        </div>
+        ))}
       </div>
-
-      {isOpen && (
-        <div
-          className="block md:hidden fixed inset-0 bg-black/50 z-30"
-          onClick={onClose}
-        ></div>
-      )}
-    </>
+    </div>
   );
 };
 

@@ -2,7 +2,7 @@
 
 import KONTAK_ITEMS from "@/constants/kontak";
 import Link from "next/link";
-import { FaPhone, FaEnvelope, FaFacebook, FaTwitter, FaInstagram, FaMapMarkerAlt } from "react-icons/fa";
+import { FaPhone, FaEnvelope, FaFacebook, FaTwitter, FaInstagram, FaMapMarkerAlt,FaTiktok } from "react-icons/fa";
 
 const ICONS = {
   Phone: <FaPhone />,
@@ -11,12 +11,24 @@ const ICONS = {
   Twitter: <FaTwitter />,
   Instagram: <FaInstagram />,
   Address: <FaMapMarkerAlt />,
+  Tiktok: <FaTiktok/>
 };
 
 const Footer = () => {
   return (
-    <footer className="bg-primary text-white py-8 mt-12">
-      <div className="max-w-7xl mx-auto px-4 grid grid-cols-1 md:grid-cols-2 gap-8">
+    <footer className="relative bg-primary-dark text-white py-8 mt-12">
+      {/* Overlay gelap untuk latar belakang */}
+      <div
+        className="absolute inset-0 bg-black opacity-[5%] z-0" // Memberikan overlay gelap dengan z-index rendah
+        style={{
+          backgroundImage: "url('/images/batik.jpg')", // Ganti dengan path gambar batik
+          backgroundSize: "cover",
+          backgroundPosition: "center",
+            pointerEvents: "none", // Menambahkan pointer-events none
+        }}
+      ></div>
+      
+      <div className="max-w-7xl mx-auto px-4 grid grid-cols-1 md:grid-cols-2 gap-8 z-10"> {/* Menambahkan z-index tinggi */}
         {/* Contact Section */}
         <div>
           <h2 className="text-lg font-semibold mb-4 uppercase tracking-wider text-center md:text-left">Kontak Kami DPC PKB PONTIANAK</h2>
@@ -35,7 +47,7 @@ const Footer = () => {
                   <span>{item.value}</span>
                 ) : (
                   <Link href={item.value} target="_blank" rel="noopener noreferrer" className="hover:underline">
-                    {item.alt}
+                    {item.alt} DPC PKB Pontianak
                   </Link>
                 )}
               </li>
@@ -71,7 +83,7 @@ const Footer = () => {
             target="_blank"
             rel="noopener noreferrer"
             className="text-white hover:text-blue-400 transition-colors"
-              aria-label="Go To X"
+            aria-label="Go To X"
           >
             <FaTwitter size={24} />
           </Link>
@@ -80,7 +92,7 @@ const Footer = () => {
             target="_blank"
             rel="noopener noreferrer"
             className="text-white hover:text-pink-600 transition-colors"
-              aria-label="Go To Instagram"
+            aria-label="Go To Instagram"
           >
             <FaInstagram size={24} />
           </Link>

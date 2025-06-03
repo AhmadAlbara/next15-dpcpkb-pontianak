@@ -3,7 +3,7 @@ import React from 'react'
 
 const JoinWithUs = () => {
   return (
-    <section className="py-12 px-4 text-center">
+    <section className=" px-4 text-center">
         <h2 className="text-3xl font-bold text-primary mb-4">
           Bergabung Bersama PKB
         </h2>

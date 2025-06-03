@@ -28,7 +28,7 @@ const ScrollToTop = () => {
   };
 
   return (
-    <div>
+    <div className="z-[1000]">
       {showButton && (
         <button
           onClick={scrollToTop}

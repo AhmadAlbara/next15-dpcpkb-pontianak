@@ -3,7 +3,7 @@
 :root {
   --background: #ffffff;
   --foreground: #171717;
-  --primary: #139b55;
+  --primary: #16ad5f;
   --primary-dark: #004d26;
   --accent: #f2c94c;
 }
@@ -73,4 +73,36 @@ body {
 }
 &.portrait .photo:after {
   padding-top: 120%;
+}
+
+
+/* Animasi untuk Progress Bar yang bergerak terus-menerus */
+@keyframes progress-bar {
+  0% {
+    width: 0%;
+  }
+  50% {
+    width: 100%;
+  }
+  100% {
+    width: 0%;
+  }
+}
+
+.animate-progress-bar {
+  animation: progress-bar 4s linear infinite;
+}
+
+/* Menambahkan animasi marquee untuk teks berjalan */
+@keyframes marquee {
+  0% {
+    transform: translateX(100%);
+  }
+  100% {
+    transform: translateX(-100%);
+  }
+}
+
+.animate-marquee {
+  animation: marquee 10s linear infinite;
 }

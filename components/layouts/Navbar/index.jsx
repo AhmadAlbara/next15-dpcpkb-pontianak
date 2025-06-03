@@ -1,78 +1,73 @@
 "use client";
 
-import AppLogo from "@/components/elements/AppLogo";
 import HamburgerButton from "@/components/elements/HamburgerButton";
 import NAVBAR_ITEMS from "@/constants/navbar";
 import Link from "next/link";
 import React, { useState } from "react";
 import MobileMenu from "./MobileMenu";
 import { FaChevronDown } from "react-icons/fa";
-import { usePathname } from "next/navigation";  // Import usePathname
+import { usePathname } from "next/navigation"; // Import usePathname
+import AppLogo from "@/components/elements/AppLogo";
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
-  const pathname = usePathname();  // Get current pathname using usePathname
+  const pathname = usePathname(); // Get current pathname using usePathname
 
   const handleToggle = () => {
     setIsOpen(!isOpen);
   };
 
-  // FILTER NAVBAR ITEMS
-  const mainItems = NAVBAR_ITEMS.filter(
-    (item) =>
-      item.label === "Beranda" ||
-      item.label === "Pengurus DPC PKB Pontianak" ||
-      item.label === "Tentang Kami"
-  );
-  const dropdownItems = NAVBAR_ITEMS.filter(
-    (item) => !mainItems.includes(item)
-  );
-
   // Function to determine if the current path is active
   const isActive = (pathnameToCompare) => {
-    return pathname === pathnameToCompare ? "text-primary font-bold" : "text-gray-400";  // Compare current path
+    return pathname === pathnameToCompare
+      ? "text-primary font-bold"
+      : "text-gray-400"; // Compare current path
   };
 
   return (
-    <nav className="w-full py-5 relative flex justify-between items-center px-4 md:px-0" id="id_navbar">
-      <AppLogo />
-
+    <nav className="w-full py-10 relative flex justify-between md:justify-center items-center px-4 md:px-0 z-[500]">
+      <div className="md:hidden block">
+        <AppLogo />
+        
+      </div>
+      {/* Desktop Menu */}
       <div className="space-x-4 hidden md:flex items-center">
-        {mainItems.map((items, i) => (
-          <Link
-            href={items.pathname.trim()}
-            key={i}
-            className={`uppercase text-sm ${isActive(items.pathname.trim())} hover:text-primary`}
-          >
-            {items.label.trim()}
-          </Link>
-        ))}
+        {NAVBAR_ITEMS.map((item, i) => (
+          <div key={i} className="relative group">
+            {/* Main Menu Item */}
+            <Link
+              href={item.pathname ? item.pathname.trim() : "#"} // Default to "#" if no pathname for non-link items like "About"
+              className={` ${isActive(
+                item.pathname ? item.pathname.trim() : "#"
+              )} hover:text-primary text-lg`}
+            >
+              {item.label.trim()}
+              {/* Chevron for Dropdown */}
+              {item.subMenu && <FaChevronDown className="ml-2 inline-block" />}
+            </Link>
 
-        {/* Dropdown Desktop - Hover */}
-        <div className="relative group">
-          <button
-            className="flex items-center gap-1 text-gray-400 hover:text-primary uppercase text-sm focus:outline-none"
-            aria-label="Drop Down"
-          >
-            Lainnya <FaChevronDown size={12} />
-          </button>
-          <div
-            className="absolute right-0 mt-2 w-48 bg-white text-black shadow-lg rounded z-50 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200"
-          >
-            {dropdownItems.map((item, i) => (
-              <Link
-                key={i}
-                href={item.pathname.trim()}
-                className={`block px-4 py-2 text-sm uppercase ${isActive(item.pathname.trim())} hover:bg-gray-100 hover:text-primary`}
-              >
-                {item.label.trim()}
-              </Link>
-            ))}
+            {/* Submenu - Dropdown */}
+            {item.subMenu && (
+              <div className="absolute left-0 w-[300px] hidden group-hover:block bg-white shadow-lg rounded-lg p-2 z-[600]">
+                {item.subMenu.map((subItem, subIndex) => (
+                  <Link
+                    key={subIndex}
+                    href={subItem.pathname.trim()}
+                    className="block px-4 py-2 text-lg text-gray-700 hover:bg-primary hover:text-white"
+                  >
+                    {subItem.label.trim()}
+                  </Link>
+                ))}
+              </div>
+            )}
           </div>
-        </div>
+        ))}
       </div>
 
+      {/* Mobile Menu Toggle Button */}
       <HamburgerButton isOpen={isOpen} onClick={handleToggle} />
+
+      {/* Mobile Menu (Dropdown for Mobile View) */}
       <MobileMenu isOpen={isOpen} onClose={() => setIsOpen(false)} />
     </nav>
   );
