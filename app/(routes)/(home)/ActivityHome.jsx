@@ -1,8 +1,11 @@
+"use client";
+
 import ACTIVITY_ITEMS from '@/constants/activity';
 import Image from 'next/image';
 import Link from 'next/link';
 import React, { useMemo } from 'react';
-import { motion } from 'framer-motion'; // Import motion
+import { motion } from 'framer-motion';
+import { fadeInUp, fadeOpacity } from '@/utils/motionVariants';
 
 const ActivityHome = () => {
   const sortedActivityItems = useMemo(() => {
@@ -10,27 +13,22 @@ const ActivityHome = () => {
   }, []);
 
   return (
-    // Wrap the section with motion.section to apply animation to the entire section
-    <motion.section
-      className="py-12 px-4"
-      initial={{ opacity: 0 }} // Initial state: hidden
-      whileInView={{ opacity: 1 }} // Animate to full opacity when in view
-      transition={{ duration: 1 }} // Duration of the animation
-    >
-      <div className="flex items-center justify-between mb-6">
+    <motion.section className="py-12 px-4" {...fadeOpacity(0)}>
+      <motion.div className="flex items-center justify-between mb-6" {...fadeInUp(0.1)}>
         <h2 className="text-base md:text-2xl font-bold text-primary">
           Kegiatan DPC PKB Pontianak
         </h2>
         <Link href={`/activity`} className="text-primary text-xs md:text-sm font-medium">
           Lihat semua →
         </Link>
-      </div>
+      </motion.div>
 
       <div className="grid md:grid-cols-3 gap-6">
         {sortedActivityItems.slice(0, 3).map((news, index) => (
-          <div
+          <motion.div
             key={index}
             className="bg-white rounded-lg shadow-md overflow-hidden flex flex-col"
+            {...fadeInUp(index * 0.2)}
           >
             <div className="h-64 relative">
               <Image
@@ -56,7 +54,7 @@ const ActivityHome = () => {
                 Baca selengkapnya →
               </Link>
             </div>
-          </div>
+          </motion.div>
         ))}
       </div>
     </motion.section>

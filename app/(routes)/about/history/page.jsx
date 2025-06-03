@@ -1,60 +1,123 @@
+"use client";
+
 import BackButton from "@/components/elements/BackButton";
 import Image from "next/image";
 import React from "react";
+import { motion } from "framer-motion";
+import { fadeInUp, fadeInZoom } from "@/utils/motionVariants";
 
-const page = () => {
+const Page = () => {
   return (
-    <section className="max-w-4xl mx-auto space-y-12 px-4 md:px-0">
+    <motion.section
+      className="max-w-4xl mx-auto space-y-12 px-4 md:px-0"
+      initial="initial"
+      animate="animate"
+    >
       <BackButton />
-      <div className="space-y-6">
+
+      <motion.div className="space-y-6" {...fadeInUp(0.1)}>
         {/* Logo Image */}
-        <div className="flex justify-center">
+        <motion.div className="flex justify-center" {...fadeInZoom(0.2)}>
           <Image
             src="/images/pendiripartai.jpeg"
             width={800}
             height={800}
             alt="Logo PKB Kota Pontianak"
+            className="rounded-xl shadow-lg"
           />
-        </div>
+        </motion.div>
 
-        <h1 className="text-2xl font-bold text-primary my-6 text-center md:text-left">
-          Sejarah PKB
-        </h1>
+        <motion.h1
+          className="text-3xl font-extrabold text-primary my-6 text-center md:text-left"
+          {...fadeInUp(0.3)}
+        >
+          Sejarah Berdirinya Partai Kebangkitan Bangsa (PKB)
+        </motion.h1>
 
-        <p className="mt-6 text-lg text-gray-700 leading-relaxed text-justify">
-          Pada tanggal 21 Mei 1998, Presiden Soeharto mengundurkan diri akibat
-          desakan arus reformasi yang kuat, yang mengarah pada lahirnya Era
-          Reformasi. Sehari setelahnya, Pengurus Besar Nahdlatul Ulama (PBNU)
-          menerima banyak usulan dari warga NU, sebagian besar terkait dengan
-          pembentukan partai politik (parpol) untuk mewadahi aspirasi politik
-          mereka. PBNU awalnya berhati-hati dan merespon secara tidak langsung,
-          mengingat keputusan Muktamar NU ke-27 yang tidak mengizinkan NU
-          terlibat dalam politik praktis.
-          <br />
-          Namun, banyak warga NU yang tidak sabar dan mendeklarasikan
-          pembentukan parpol sendiri, seperti Partai Bintang Sembilan di
-          Purwokerto dan Partai Kebangkitan Umat (Perkanu) di Cirebon. PBNU
-          kemudian membentuk Tim Lima pada tanggal 3 Juni 1998 untuk menanggapi
-          usulan tersebut. Tim Lima diketuai oleh KH Ma'ruf Amin dan diberikan
-          tugas untuk memenuhi aspirasi politik warga NU.
-          <br />
-          Pada 20 Juni 1998, PBNU memberi surat tugas kepada Tim Lima untuk
-          memperkuat posisi dan kerja mereka. Tim Asistensi dibentuk untuk
-          membantu menginventarisasi usulan dan merancang pembentukan parpol
-          baru. Pada 26-28 Juni 1998, konsinyering diadakan di Cipanas, yang
-          menghasilkan lima rancangan terkait pembentukan parpol.
-          <br />
-          Gus Dur, sebagai inisiator pembentukan parpol berbasis ahlussunah wal
-          jamaah, awalnya ragu, namun akhirnya mendukung pembentukan partai
-          tersebut. Deklarasi Partai Kebangkitan Bangsa (PKB) dilakukan pada 23
-          Juli 1998 di Jakarta, dengan tujuan untuk menciptakan bangsa yang
-          merdeka, bersatu, adil, makmur, dan demokratis, serta melaksanakan
-          cita-cita proklamasi kemerdekaan Indonesia. PKB didirikan sebagai
-          partai yang bersifat kejuangan, kebangsaan, terbuka, dan demokratis.
-        </p>
-      </div>
-    </section>
+        {/* Quote */}
+        <motion.blockquote
+          className="border-l-4 border-primary pl-4 italic text-gray-600 text-lg"
+          {...fadeInUp(0.4)}
+        >
+          “Politik adalah jalan pengabdian untuk kemaslahatan umat.” — KH. Abdurrahman Wahid (Gus Dur)
+        </motion.blockquote>
+
+    
+     
+          <motion.p
+  
+            className="text-lg text-gray-700 leading-relaxed text-justify"
+            {...fadeInUp(0.5 )}
+          >
+           Pada tanggal <strong>21 Mei 1998</strong>, Presiden Soeharto resmi mengundurkan diri
+          setelah 32 tahun berkuasa. Momen bersejarah ini menjadi titik awal dari Era Reformasi
+          yang membuka kran demokrasi dan kebebasan politik di Indonesia.
+          </motion.p>
+          <motion.p
+  
+            className="text-lg text-gray-700 leading-relaxed text-justify"
+            {...fadeInUp(0.6)}
+          >
+                  Hanya sehari setelahnya, <strong>Pengurus Besar Nahdlatul Ulama (PBNU)</strong> menerima
+          berbagai usulan dari kalangan Nahdliyin yang menginginkan adanya wadah politik yang dapat
+          mewakili aspirasi mereka secara langsung. Meski awalnya berhati-hati karena Muktamar NU
+          sebelumnya melarang keterlibatan dalam politik praktis, desakan dari bawah semakin kuat.
+          </motion.p>
+  
+
+        {/* Highlight Box */}
+        <motion.div
+          className="bg-gray-100 p-4 rounded-lg shadow-inner my-4"
+          {...fadeInZoom(0.7)}
+        >
+          <p className="text-md text-gray-800 leading-relaxed">
+            Beberapa kelompok NU bahkan secara independen mendeklarasikan partai baru seperti
+            <strong> Partai Bintang Sembilan</strong> di Purwokerto dan
+            <strong> Partai Kebangkitan Umat (Perkanu)</strong> di Cirebon, sebagai bentuk
+            kegelisahan akan representasi politik.
+          </p>
+        </motion.div>
+
+    
+          <motion.p
+         
+            className="text-lg text-gray-700 leading-relaxed text-justify"
+            {...fadeInUp(0.8 )}
+          >
+             Untuk merespon dinamika tersebut, PBNU membentuk <strong>Tim Lima</strong> pada 3 Juni
+          1998, yang diketuai oleh <strong>KH. Ma’ruf Amin</strong>. Tim ini bertugas merumuskan
+          pembentukan partai baru yang mampu menyalurkan aspirasi politik warga NU dengan cara yang
+          sesuai dengan nilai-nilai Islam Ahlussunnah wal Jamaah.
+          </motion.p>
+   
+          <motion.p
+         
+            className="text-lg text-gray-700 leading-relaxed text-justify"
+            {...fadeInUp(0.8 )}
+          >
+               Puncaknya adalah pada <strong>23 Juli 1998</strong>, saat <strong>Partai Kebangkitan Bangsa (PKB) </strong>
+          secara resmi dideklarasikan di Jakarta. Partai ini lahir sebagai wujud perlawanan terhadap
+          kekuasaan yang otoriter dan sebagai harapan baru untuk membangun bangsa yang lebih adil,
+          makmur, dan demokratis.
+          </motion.p>
+   
+
+        {/* Core Values */}
+        <motion.div
+          className="bg-primary text-white p-6 rounded-lg space-y-3 mt-6"
+          {...fadeInZoom(1)}
+        >
+          <h2 className="text-xl font-semibold">Nilai-Nilai Dasar PKB:</h2>
+          <ul className="list-disc list-inside space-y-1">
+            <li>Kejuangan</li>
+            <li>Kebangsaan</li>
+            <li>Keterbukaan</li>
+            <li>Demokrasi</li>
+          </ul>
+        </motion.div>
+      </motion.div>
+    </motion.section>
   );
 };
 
-export default page;
+export default Page;

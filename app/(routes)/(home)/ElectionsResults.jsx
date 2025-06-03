@@ -11,9 +11,11 @@ import {
   Tooltip,
   Legend,
 } from "chart.js";
-import ChartDataLabels from "chartjs-plugin-datalabels"; // Import plugin datalabels
+import ChartDataLabels from "chartjs-plugin-datalabels";
+import { motion } from "framer-motion";
+import { fadeInUp } from "@/utils/motionVariants";
 
-// Register chart components
+// Register components and plugins
 ChartJS.register(
   CategoryScale,
   LinearScale,
@@ -25,31 +27,29 @@ ChartJS.register(
 );
 
 const ElectionsResults = () => {
-  // Data perolehan suara dan persentase
   const results = [
     { year: 2014, totalVotes: 24700, percentage: 11.13 },
     { year: 2019, totalVotes: 26952, percentage: 13 },
     { year: 2024, totalVotes: 26556, percentage: 14 },
   ];
 
-  // Data untuk grafik
   const chartData = {
     labels: results.map((result) => `Pemilu ${result.year}`),
     datasets: [
       {
         label: "Perolehan Suara (%)",
         data: results.map((result) => result.percentage),
-        backgroundColor: "#16ad5f", // Warna hijau PKB
-        borderColor: "#004d26", // Warna hijau lebih gelap untuk border
+        backgroundColor: "#16ad5f",
+        borderColor: "#004d26",
         borderWidth: 1,
-        barThickness: 100, // Ukuran batang grafik lebih besar agar lebih menonjol
+        barThickness: 100,
         datalabels: {
-          align: "center", // Posisi label di tengah batang
-          anchor: "center", // Posisi label di atas batang
-          color: "#ffffff", // Warna teks label
+          align: "center",
+          anchor: "center",
+          color: "#ffffff",
           font: {
-            weight: "bold", // Tebal font
-            size: 12, // Ukuran font label
+            weight: "bold",
+            size: 12,
           },
           formatter: (value, context) => {
             const totalVotes = results[context.dataIndex].totalVotes;
@@ -60,12 +60,10 @@ const ElectionsResults = () => {
     ],
   };
 
-  // Opsi untuk grafik
   const options = {
     responsive: true,
-    maintainAspectRatio: false, // Menjaga agar grafik menyesuaikan ukuran layar
+    maintainAspectRatio: false,
     plugins: {
-   
       tooltip: {
         callbacks: {
           label: (tooltipItem) => `${tooltipItem.raw}%`,
@@ -74,42 +72,37 @@ const ElectionsResults = () => {
     },
     scales: {
       x: {
-        display: true, // Menghapus sumbu X
-        grid: {
-          display: false, // Menyembunyikan grid untuk sumbu X
-        },
+        display: true,
+        grid: { display: false },
       },
       y: {
-        display: false, // Menghapus sumbu Y
-        grid: {
-          display: false, // Menyembunyikan grid untuk sumbu Y
-        },
-        ticks: {
-          beginAtZero: false,
-        },
+        display: false,
+        grid: { display: false },
+        ticks: { beginAtZero: false },
       },
     },
   };
 
   return (
-    <section className="py-12 ">
-      <h2 className="text-3xl font-bold text-center text-primary">
+    <motion.section className="py-12" {...fadeInUp(0)}>
+      <motion.h2 className="text-3xl font-bold text-center text-primary" {...fadeInUp(0.1)}>
         Perolehan Suara PKB 
-      </h2>
-      <p className="text-center  text-lg  mb-8">Dalam Pemilihan Anggota Dewan Perwakilan Rakyat Daerah Kota Pontianak</p>
-      <div className="max-w-4xl mx-auto">
-        <Bar data={chartData} options={options} height={400} />
-      </div>
+      </motion.h2>
+      <motion.p className="text-center text-lg mb-8" {...fadeInUp(0.2)}>
+        Dalam Pemilihan Anggota Dewan Perwakilan Rakyat Daerah Kota Pontianak
+      </motion.p>
 
-      <div className="text-center mt-8">
-        <p className="text-lg ">
-          PKB telah menunjukkan peningkatan yang signifikan di setiap pemilu,{" "}
-          <br />
-          dengan pencapaian tertinggi di Pemilu 2024 dengan perolehan kursi
-          sebanyak 4.
+      <motion.div className="max-w-4xl mx-auto" {...fadeInUp(0.3)}>
+        <Bar data={chartData} options={options} height={400} />
+      </motion.div>
+
+      <motion.div className="text-center mt-8" {...fadeInUp(0.4)}>
+        <p className="text-lg">
+          PKB telah menunjukkan peningkatan yang signifikan di setiap pemilu, <br />
+          dengan pencapaian tertinggi di Pemilu 2024 dengan perolehan kursi sebanyak 4.
         </p>
-      </div>
-    </section>
+      </motion.div>
+    </motion.section>
   );
 };
 

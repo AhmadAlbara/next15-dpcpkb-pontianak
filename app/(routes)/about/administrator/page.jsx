@@ -4,116 +4,127 @@ import React from "react";
 import Image from "next/image";
 import BackButton from "@/components/elements/BackButton";
 import { PROFILE_ITEMS_PONTIANAK } from "@/constants/profile";
-import { FaFacebook, FaTwitter, FaInstagram } from "react-icons/fa"; // Import icons
+import { FaFacebook, FaInstagram } from "react-icons/fa";
+import { motion } from "framer-motion";
+import { fadeInUp } from "@/utils/motionVariants";
 
 const ProfilePage = () => {
   return (
-    <section className="max-w-4xl mx-auto px-4 md:px-0">
+    <motion.section
+      className="max-w-4xl mx-auto px-4 md:px-0"
+      initial="initial"
+      animate="animate"
+    >
       <BackButton />
-      <h1 className="text-2xl font-bold text-primary my-6 text-center md:text-left">
-        Profil Kepengurusan DPC PKB Pontianak
-      </h1>
+
+      <motion.h1
+        className="text-3xl font-extrabold text-primary my-6 text-center md:text-left"
+        {...fadeInUp(0.1)}
+      >
+        Profil Kepengurusan DPC PKB Kota Pontianak
+      </motion.h1>
 
       {PROFILE_ITEMS_PONTIANAK.map((profile, index) => (
-        <div key={index} className="mb-10">
+        <motion.div key={index} className="mb-12" {...fadeInUp(index * 0.2 + 0.2)}>
+          {/* Profile Header */}
           <div className="flex flex-col md:flex-row items-center md:items-start md:gap-6 mb-4">
             {profile.image && (
-              <div className="relative w-40 h-52 md:w-48 md:h-48 overflow-hidden mb-4 md:mb-0 flex-shrink-0">
+              <div className="relative w-40 h-52 md:w-48 md:h-48 overflow-hidden mb-4 md:mb-0 flex-shrink-0 rounded-xl">
                 <Image
                   src={profile.image}
                   alt={profile.name}
                   layout="fill"
-                  objectFit="contain"
+                  objectFit="cover"
+                  objectPosition="top"
                 />
               </div>
             )}
-            <div className="text-center md:text-left">
-              <h2 className="text-2xl font-semibold text-primary">
-                {profile.name}
-              </h2>
+
+            <div className="text-center md:text-left space-y-1">
+              <h2 className="text-2xl font-bold text-primary">{profile.name}</h2>
               {profile.alias && (
-                <p className="text-lg text-gray-700 italic">{profile.alias}</p>
+                <p className="text-lg text-gray-600 italic">{profile.alias}</p>
               )}
-              <p className="text-base text-gray-600">{profile.position}</p>
+              <p className="text-lg text-gray-700">{profile.position}</p>
             </div>
           </div>
 
-          <p className="text-gray-800 mb-4 leading-relaxed text-justify">
-            {profile.description}
-          </p>
+          {/* Description */}
+          {profile.description && (
+            <p className="text-gray-800 mb-4 leading-relaxed text-justify text-lg">
+              {profile.description}
+            </p>
+          )}
 
-          {/* Display Work Experience */}
-          {profile.workExperience && profile.workExperience.length > 0 && (
-            <div>
-              <h3 className="font-semibold text-primary">Pengalaman Kerja:</h3>
-              <ul className="list-disc pl-5 space-y-1">
+          {/* Experience */}
+          {profile.workExperience?.length > 0 && (
+            <div className="mb-4">
+              <h3 className="font-semibold text-primary mb-1 text-lg">Pengalaman Kerja:</h3>
+              <ul className="list-disc pl-5 space-y-1 text-gray-700">
                 {profile.workExperience.map((work, i) => (
-                  <li key={i} className="text-gray-600">
-                    {work}
-                  </li>
+                  <li key={i}>{work}</li>
                 ))}
               </ul>
             </div>
           )}
 
-          {/* Display Career */}
-          {profile.career && profile.career.length > 0 && (
-            <div>
-              <h3 className="font-semibold text-primary">Karir:</h3>
-              <ul className="list-disc pl-5 space-y-1">
+          {/* Career */}
+          {profile.career?.length > 0 && (
+            <div className="mb-4">
+              <h3 className="font-semibold text-primary mb-1 text-lg">Karir:</h3>
+              <ul className="list-disc pl-5 space-y-1 text-gray-700">
                 {profile.career.map((career, i) => (
-                  <li key={i} className="text-gray-600">
-                    {career}
-                  </li>
+                  <li key={i}>{career}</li>
                 ))}
               </ul>
             </div>
           )}
 
-          {/* Display Achievements */}
-          {profile.achievements && profile.achievements.length > 0 && (
-            <div>
-              <h3 className="font-semibold text-primary">Prestasi:</h3>
-              <ul className="list-disc pl-5 space-y-1">
+          {/* Achievements */}
+          {profile.achievements?.length > 0 && (
+            <div className="mb-4">
+              <h3 className="font-semibold text-primary mb-1 text-lg">Prestasi:</h3>
+              <ul className="list-disc pl-5 space-y-1 text-gray-700">
                 {profile.achievements.map((achievement, i) => (
-                  <li key={i} className="text-gray-600">
-                    {achievement}
-                  </li>
+                  <li key={i}>{achievement}</li>
                 ))}
               </ul>
             </div>
           )}
 
-          {/* Display Social Media Links */}
-          <div className="flex gap-4 justify-center md:justify-start my-4">
-            {profile.socialMedia?.facebook && (
-              <a
-                href={profile.socialMedia.facebook}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="text-blue-600 hover:text-blue-800"
-                aria-label="Go To Facebook"
-              >
-                <FaFacebook size={24} />
-              </a>
-            )}
-            {profile.socialMedia?.instagram && (
-              <a
-                href={profile.socialMedia.instagram}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="text-pink-600 hover:text-pink-800"
-                aria-label="Go To Instagram"
-              >
-                <FaInstagram size={24} />
-              </a>
-            )}
-          </div>
+          {/* Social Media */}
+          {(profile.socialMedia?.facebook || profile.socialMedia?.instagram) && (
+            <div className="flex gap-4 justify-center md:justify-start mt-4">
+              {profile.socialMedia?.facebook && (
+                <a
+                  href={profile.socialMedia.facebook}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-blue-600 hover:text-blue-800 transition-colors"
+                  aria-label="Facebook"
+                >
+                  <FaFacebook size={30} />
+                </a>
+              )}
+              {profile.socialMedia?.instagram && (
+                <a
+                  href={profile.socialMedia.instagram}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-pink-600 hover:text-pink-800 transition-colors"
+                  aria-label="Instagram"
+                >
+                  <FaInstagram size={30} />
+                </a>
+              )}
+            </div>
+          )}
 
-          <hr className="mt-6 border-t border-gray-300" />
-        </div>
+          {/* Divider */}
+          <hr className="mt-8 border-t border-gray-300" />
+        </motion.div>
       ))}
-    </section>
+    </motion.section>
   );
 };
 
