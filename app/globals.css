@@ -23,7 +23,7 @@
   }
 }
 * {
- 
+  @apply md:transition-all md:ease-in-out md:duration-200;
 }
 
 body {
