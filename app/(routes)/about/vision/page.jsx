@@ -94,7 +94,7 @@ const Page = () => {
       {/* Highlight Box */}
       <motion.div
         className="bg-primary text-white p-6 rounded-xl shadow-lg mt-12"
-        {...fadeInZoom(1.5)}
+        {...fadeInZoom(0.5)}
       >
         <p className="text-lg text-center font-medium">
           PKB bukan sekadar partai politik — ia adalah gerakan moral dan sosial yang menjembatani
