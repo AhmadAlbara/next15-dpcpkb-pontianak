@@ -25,10 +25,18 @@ const Navbar = () => {
   };
 
   return (
-    <nav className="w-full py-10 relative flex justify-between md:justify-center items-center px-4 md:px-0 z-[500]">
+    <nav className="w-full bg-primary-dark py-5 mb-5 md:mb-0 md:py-10 relative flex justify-between md:justify-center items-center px-4 md:px-0 z-[500] md:bg-white">
+      <div
+        className="absolute inset-0 bg-black opacity-[5%] md:hidden block" // Memberikan overlay gelap
+        style={{
+          backgroundImage: "url('/images/batik.jpg')", // Ganti dengan path gambar batik
+          backgroundSize: "cover",
+          backgroundPosition: "center",
+          pointerEvents: "none",
+        }}
+      ></div>
       <div className="md:hidden block">
         <AppLogo />
-        
       </div>
       {/* Desktop Menu */}
       <div className="space-x-4 hidden md:flex items-center">
