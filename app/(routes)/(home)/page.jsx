@@ -7,6 +7,7 @@ import GaleryHome from "./GaleryHome";
 
 import JoinWithUs from "./JoinWithUs";
 import ElectionsResults from "./ElectionsResults";
+import Location from "./Location";
 
 export default function Home() {
   return (
@@ -16,7 +17,7 @@ export default function Home() {
       <ElectionsResults />
       <ActivityHome />
       <GaleryHome />
-      <Location />
+      <Location/>
       <JoinWithUs />
     </div>
   );
