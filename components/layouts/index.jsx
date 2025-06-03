@@ -1,3 +1,4 @@
+"use client";
 import React from "react";
 import Navbar from "./Navbar";
 import Footer from "./Footer";
@@ -6,6 +7,7 @@ import ScrollToTop from "../elements/ScrollToTop";
 import AppLogo from "../elements/AppLogo";
 import Image from "next/image";
 import Header from "./Header";
+import { AnimatePresence } from "framer-motion";
 
 const AppLayout = ({ children }) => {
   return (
@@ -13,9 +15,10 @@ const AppLayout = ({ children }) => {
       <Header />
       <Navbar />
       <div className="md:max-w-7xl md:mx-auto">
-        
         <main className="justify-evenly md:flex md:gap-8  ">
-          <div className="">{children}</div>
+          <div className="">
+            <AnimatePresence mode="popLayout">{children}</AnimatePresence>
+          </div>
           <Sidebar />
         </main>
       </div>
