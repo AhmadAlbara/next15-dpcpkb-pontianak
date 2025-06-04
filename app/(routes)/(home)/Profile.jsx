@@ -43,7 +43,7 @@ const Profile = () => {
           </motion.p>
           <motion.p  {...fadeInUp(0)} >
             <Link
-              href={"/administrator"}
+              href={"/about/administrator"}
               className="text-primary text-sm font-medium mt-auto inline-block pt-2"
             >
               Baca selengkapnya →
